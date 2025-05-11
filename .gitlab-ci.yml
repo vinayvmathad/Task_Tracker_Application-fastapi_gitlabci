@@ -3,8 +3,7 @@ stages:
 
 install-requirements:
   stage: install
-  tags:
-    - ec2-runner  # Replace with your GitLab runner tag
+  
   script:
     - python3 -m venv venv
     - source venv/bin/activate
