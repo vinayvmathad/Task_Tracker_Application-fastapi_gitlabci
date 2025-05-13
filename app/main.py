@@ -7,6 +7,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+
 def get_db():
     db = SessionLocal()
     try:
@@ -14,9 +15,11 @@ def get_db():
     finally:
         db.close()
 
+
 @app.get("/tasks/")
 def read_tasks(db: Session = Depends(get_db)):
     return crud.get_tasks(db)
+
 
 @app.post("/tasks/")
 def add_task(title: str, db: Session = Depends(get_db)):
