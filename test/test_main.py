@@ -8,6 +8,7 @@ Base.metadata.create_all(bind=engine)
 
 client = TestClient(app)
 
+
 def test_read_tasks():
     response = client.get("/tasks/")
     assert response.status_code == 200
