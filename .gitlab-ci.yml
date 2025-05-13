@@ -2,6 +2,13 @@ stages:
   - install
   - test
 
+variables:
+  POSTGRES_DB: tasks
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
+  DB_HOST: postgres
+
+
 install-requirements:
   stage: install
   image: python:3.11
@@ -16,6 +23,16 @@ run-tests:
     stage: test
     image: python:3.11
 
+    services:
+    - name: postgres:14
+      alias: postgres
+
+    variables:
+      POSTGRES_DB: tasks
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      DB_HOST: postgres
+      
     script:
       - python3 -m venv venv
       - source venv/bin/activate
