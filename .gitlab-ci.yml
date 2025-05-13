@@ -42,4 +42,4 @@ run-tests:
       - source venv/bin/activate
       - pip install -r requirements.txt
       - export PYTHONPATH=.
-      - pytest test/
+      - - pytest --cov=app --cov-report=term-missing test/
