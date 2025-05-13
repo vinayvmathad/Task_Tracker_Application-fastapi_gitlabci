@@ -25,6 +25,7 @@ def read_tasks(db: Session = Depends(get_db)):
 def add_task(title: str, db: Session = Depends(get_db)):
     return crud.create_task(db, title)
 
+
 @app.put("/tasks/{task_id}")
 def mark_done(task_id: int, db: Session = Depends(get_db)):
     return crud.complete_task(db, task_id)
