@@ -11,6 +11,7 @@ def create_task(db: Session, title: str):
     db.refresh(task)
     return task
 
+
 def complete_task(db: Session, task_id: int):
     task = db.query(Task).filter(Task.id == task_id).first()
     if task:
