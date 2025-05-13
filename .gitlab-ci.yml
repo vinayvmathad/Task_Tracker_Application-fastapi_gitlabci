@@ -1,13 +1,7 @@
 stages:
   - install
+  - lint
   - test
-
-variables:
-  POSTGRES_DB: tasks
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: password
-  DB_HOST: postgres
-
 
 install-requirements:
   stage: install
@@ -18,6 +12,16 @@ install-requirements:
     - source venv/bin/activate
     - pip install --upgrade pip
     - pip install -r requirements.txt
+
+Code-Quality-Check:
+  stage: lint
+  image: python:3.11
+
+  script:
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - pip install flake8
+    - flake8 app/ test/
 
 run-tests:
     stage: test
