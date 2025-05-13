@@ -1,8 +1,10 @@
 from .models import Task
 from sqlalchemy.orm import Session
 
+
 def get_tasks(db: Session):
     return db.query(Task).all()
+
 
 def create_task(db: Session, title: str):
     task = Task(title=title)
